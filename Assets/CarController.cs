@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinController : MonoBehaviour
+public class CarController : MonoBehaviour
 {
     //unitychanのオブジェクト
     private GameObject unitychan;
 
-    //coinのRenderer
-    private Renderer coinRenderer;
+    //carのRenderer
+    private Renderer carRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -17,24 +17,18 @@ public class CoinController : MonoBehaviour
         this.unitychan = GameObject.Find("unitychan");
 
         //Rendererを取得
-        this.coinRenderer = GetComponent<Renderer>();
-
-        //回転を開始する角度を設定
-        this.transform.Rotate(0, Random.Range(0, 360), 0);
+        this.carRenderer = GetComponent<Renderer>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //回転
-        this.transform.Rotate(0, 3, 0);
-
         //unitychanの位置より後ろ、且つカメラの範囲外の場合、自身を破棄
-        if (this.unitychan.transform.position.z > this.transform.position.z && ! this.coinRenderer.isVisible)
+        if (this.unitychan.transform.position.z > this.transform.position.z && !this.carRenderer.isVisible)
         {
             Destroy(this.gameObject);
         }
+
     }
-    
 }
